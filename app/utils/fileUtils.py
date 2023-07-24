@@ -6,7 +6,7 @@ def getFiles(baseDIR):
     return os.listdir(baseDIR)
 
 
-def getFilesSorted(files):
+def getFilesSorted(files: list) -> tuple:
     pdfFiles=[]
     imageFiles=[]
     docFiles=[]
@@ -19,7 +19,7 @@ def getFilesSorted(files):
             imageFiles.append(file)
         elif file.endswith(".doc") or file.endswith(".docx") or file.endswith(".txt"):
             docFiles.append(file)
-        else:
+        elif file.__contains__("."):
             otherFiles.append(file)
     return pdfFiles,imageFiles,docFiles,otherFiles
 
