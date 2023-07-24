@@ -2,7 +2,7 @@
 import shutil
 import os
 
-def getFiles(baseDIR):
+def getFiles(baseDIR:str,excludeFiles:list = []):
     return os.listdir(baseDIR)
 
 
@@ -26,21 +26,31 @@ def getFilesSorted(files: list) -> tuple:
 def createFoldersifNotExists(baseDIR,files):
     try:
         files.index("Pdf")
-    except Exception:
+    except Exception as e:
+        print("Exception at pdf folder creation")
+        print(e)
         os.mkdir(f"{baseDIR}/Pdf")
 
     try:
         files.index("Documents")
     except Exception:
+        print("Exception at document folder creation")
+        print(e)
         os.mkdir(f"{baseDIR}/Documents")
 
     try:
         files.index("Images")
     except Exception:
+        print("Exception at image folder creation")
+        print(e)
+        
         os.mkdir(f"{baseDIR}/Images")
     try:
         files.index("Other")
     except Exception:
+        print("Exception at pdf other creation")
+        print(e)
+        
         os.mkdir(f"{baseDIR}/Other")
 
 def putFilesInFolder(baseDIR,pdfFiles,imageFiles,docFiles,otherFiles):
